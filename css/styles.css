@@ -498,15 +498,15 @@ body::before{
   transform: translateX(-60%) translateY(0);
   opacity: 0.9;
 
-  animation: bgShine 18s ease-in-out infinite;
+  animation: bgShine 14s ease-in-out infinite;
 }
 
 /* Move the band across slowly */
 @keyframes bgShine{
   0%   { transform: translateX(-70%) translateY(0); opacity: 0.0; }
   10%  { opacity: 0.9; }
-  50%  { transform: translateX(70%) translateY(0); opacity: 0.9; }
-  60%  { opacity: 0.0; }
+  80%  { transform: translateX(70%) translateY(0); opacity: 0.9; }
+  90%  { opacity: 0.0; }
   100% { transform: translateX(70%) translateY(0); opacity: 0.0; }
 }
 
@@ -515,4 +515,72 @@ body::before{
   position: relative;
   z-index: 1;}
 
-  
+  /* Projects search controls */
+.projects-controls{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 14px 0 10px;
+  flex-wrap: wrap;
+}
+.project-search{
+  flex: 1 1 280px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 11px 12px;
+  background: rgba(255,255,255,0.03);
+  color: var(--text);
+  outline: none;
+}
+.project-search:focus{
+  border-color: rgba(71,152,251,0.65);
+  box-shadow: 0 0 0 4px rgba(71,152,251,0.18);
+}
+
+.empty-state{
+  color: var(--muted);
+  margin: 8px 0 0;
+}
+
+/* API card */
+.api-card .api-head{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.api-status{
+  margin: 10px 0 0;
+  color: var(--muted);
+}
+.api-quote{
+  margin: 12px 0 0;
+  padding-left: 14px;
+  border-left: 3px solid rgba(71,152,251,0.55);
+  color: var(--text);
+  white-space: pre-line; /* allows line break in quote */
+}
+.api-author{
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+/* Small animated loading shimmer for the status text */
+.api-status.loading{
+  position: relative;
+  overflow: hidden;
+}
+.api-status.loading::after{
+  content:"";
+  position:absolute;
+  inset: 0;
+  transform: translateX(-60%);
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.08) 45%, transparent 90%);
+  animation: statusShine 1.2s ease-in-out infinite;
+}
+@keyframes statusShine{
+  0%{ transform: translateX(-60%); }
+  100%{ transform: translateX(60%); }
+}

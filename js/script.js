@@ -124,3 +124,93 @@ $("contactForm").addEventListener("submit", (e) => {
 // Footer year
 // ===========================
 $("year").textContent = String(new Date().getFullYear());
+
+// ===========================
+// Assignment 2 
+// ===========================
+// Project search / filter
+(function initProjectSearch(){
+  const search = $("projectSearch");
+  const clearBtn = $("clearSearch");
+  const empty = $("projectsEmpty");
+  const cards = Array.from(document.querySelectorAll(".project.card"));
+
+  if (!search || !clearBtn || !empty || cards.length === 0) return;
+
+  function normalize(s){
+    return (s || "").toLowerCase().trim();
+  }
+
+  function applyFilter(){
+    const q = normalize(search.value);
+    let shown = 0;
+
+    cards.forEach(card => {
+      const text = normalize(card.textContent);
+      const tags = normalize(card.getAttribute("data-tags"));
+      const match = q === "" || text.includes(q) || tags.includes(q);
+
+      card.style.display = match ? "" : "none";
+      if (match) shown += 1;
+    });
+
+    empty.hidden = shown !== 0;
+  }
+
+  search.addEventListener("input", applyFilter);
+  clearBtn.addEventListener("click", () => {
+    search.value = "";
+    search.focus();
+    applyFilter();
+    showToast("Search cleared");
+  });
+
+  applyFilter();
+})();
+
+// ===========================
+// Shows loading + friendly errors.
+// ===========================
+(async function initDevQuote() {
+  const statusEl = $("quoteStatus");
+  const quoteEl = $("quoteText");
+  const authorEl = $("quoteAuthor");
+  const refreshBtn = $("refreshQuote");
+
+  if (!statusEl || !quoteEl || !authorEl || !refreshBtn) return;
+
+  async function loadQuote() {
+    // UI -> loading state
+    statusEl.textContent = "Loading…";
+    statusEl.classList.add("loading");
+    quoteEl.hidden = true;
+    authorEl.hidden = true;
+
+    try {
+      const res = await fetch("https://api.github.com/zen", {
+        cache: "no-store",
+      });
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+
+      const text = (await res.text()).trim();
+      if (!text) throw new Error("Empty response");
+
+      quoteEl.textContent = `“${text}”`;
+      authorEl.textContent = "- GitHub Zen";
+
+      statusEl.textContent = '';
+      quoteEl.hidden = false;
+      authorEl.hidden = false;
+    } catch (err) {
+      statusEl.textContent =
+        "Couldn’t load a quote. Check your connection and try again.";
+      showToast("Quote failed to load");
+      console.error(err);
+    } finally {
+      statusEl.classList.remove("loading");
+    }
+  }
+
+  refreshBtn.addEventListener("click", loadQuote);
+  await loadQuote();
+})();

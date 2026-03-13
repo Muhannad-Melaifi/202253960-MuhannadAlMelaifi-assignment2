@@ -1,29 +1,18 @@
-# AI Usage Report (Assignment 1)
+# AI Usage Report (Assignment 2)
 
 ## Tools Used & Use Cases
 ### ChatGPT
-- Generated an initial project structure aligned with the assignment rubric.
-- Drafted starter HTML sections (About, Projects, Contact) with clean semantic markup.
-- Suggested responsive CSS patterns using Grid/Flexbox.
-- Helped implement JavaScript features: theme toggle, time-based greeting, and form validation.
-- Used to generate project images from my own projects.
+I used ChatGPT to help plan and implement interactive features for my portfolio website. It assisted with:
+- Ideas that match the assignment requirements (dynamic content + data handling + user feedback)
+- JavaScript suggestions for project filtering and an API widget
+- Small UI/UX improvements (clear messages, simple controls, accessibility basics)
 
-
-### Benefits
-- Faster development from a working starting point.
-- Helped catch missing rubric requirements early (sections, responsiveness, JS feature, documentation).
-- Provided ideas for UI/UX like placeholders for missing images and toast feedback.
-
-### Challenges 
-- Some code needed simplification to match course level and avoid unnecessary complexity.
-- Required manual review to ensure correctness and that all features work together.
+## Benefits & Challenges
+**Benefits:** Faster development, clearer structure, and help debugging small issues.  
+**Challenges:** Some suggestions needed simplification, and external APIs can fail (so loading/error handling was required).
 
 ## Learning Outcomes
-- Improved understanding of responsive layout planning (Grid vs Flex).
-- Practiced validating user input in JavaScript and giving clear UI feedback.
-- Improved documentation habits
+I improved my understanding of DOM manipulation, event handling, and using `fetch()` with basic error handling and user feedback.
 
 ## Responsible Use & Modifications
-- Reviewed all generated code lines and rewrote parts to ensure I understand it.
-- Tested responsiveness using browser DevTools and fixed layout issues.
-- Ensured no direct copying from external sources and documented AI use transparently.
+I reviewed and edited all AI suggestions, tested the features (including failure cases), and made sure I understand the final code before submitting.

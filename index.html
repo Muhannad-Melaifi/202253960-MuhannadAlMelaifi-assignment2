@@ -1,131 +1,185 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Muhannad's personal portfolio - Software Engineering student at KFUPM" />
-  <title>Muhannad | Portfolio</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Muhannad's personal portfolio - Software Engineering student at KFUPM"
+    />
+    <title>Muhannad | Portfolio</title>
 
-  <link rel="stylesheet" href="css/styles.css" />
-  <script defer src="js/script.js"></script>
-</head>
-<body>
-  <!-- Skip link for accessibility -->
-  <a class="skip-link" href="#main">Skip to content</a>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script defer src="js/script.js"></script>
+  </head>
+  <body>
+    <!-- Skip link for accessibility -->
+    <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <nav class="navbar container" aria-label="Primary navigation">
-      <a class="brand" href="#home" aria-label="Go to top">
-        <span class="brand-dot" aria-hidden="true"></span>
-        <span>Muhannad</span>
-      </a>
+    <header class="site-header">
+      <nav class="navbar container" aria-label="Primary navigation">
+        <a class="brand" href="#home" aria-label="Go to top">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <span>Muhannad</span>
+        </a>
 
-      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
-        <span class="sr-only">Toggle navigation</span>
-        ☰
-      </button>
-
-      <div class="nav-right">
-        <ul class="nav-menu" id="navMenu">
-          <li><a class="nav-link" href="#about">About</a></li>
-          <li><a class="nav-link" href="#projects">Projects</a></li>
-          <li><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
-
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
-          <span id="themeIcon" aria-hidden="true">Dark</span>
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-expanded="false"
+          aria-controls="navMenu"
+        >
+          <span class="sr-only">Toggle navigation</span>
+          ☰
         </button>
-      </div>
-    </nav>
-  </header>
 
-  <main id="main">
-    <!-- HERO -->
-    <section id="home" class="hero">
-      <div class="container hero-grid">
-        <div class="hero-text">
-          <p class="pill" id="greetingPill">Hello!</p>
-          <h1>
-            Hi, I’m <span class="accent">Muhannad</span>
-          </h1>
-          <p class="subtitle">
-            Software Engineering student building practical systems with clean UI and reliable web experience.
-          </p>
+        <div class="nav-right">
+          <ul class="nav-menu" id="navMenu">
+            <li><a class="nav-link" href="#about">About</a></li>
+            <li><a class="nav-link" href="#projects">Projects</a></li>
+            <li><a class="nav-link" href="#contact">Contact</a></li>
+          </ul>
 
-          <div class="hero-actions">
-            <a class="btn primary" href="#projects">View Projects</a>
-            <a class="btn" href="#contact">Contact Me</a>
-          </div>
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+            aria-label="Toggle dark mode"
+          >
+            <span id="themeIcon" aria-hidden="true">Dark</span>
+          </button>
         </div>
+      </nav>
+    </header>
 
-        <div class="hero-card">
-          <div class="profile">
-            <img
-              src="assets/images/profile.jpg"
-              alt="Profile photo"
-              onerror="this.style.display='none'; document.getElementById('profileFallback').style.display='grid';"
-            />
-            <div id="profileFallback" class="profile-fallback" style="display:none;">
-              <p>Profile image not available</p>
+    <main id="main">
+      <!-- HERO -->
+      <section id="home" class="hero">
+        <div class="container hero-grid">
+          <div class="hero-text">
+            <p class="pill" id="greetingPill">Hello!</p>
+            <h1>Hi, I’m <span class="accent">Muhannad</span></h1>
+            <p class="subtitle">
+              Software Engineering student building practical systems with clean
+              UI and reliable web experience.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn primary" href="#projects">View Projects</a>
+              <a class="btn" href="#contact">Contact Me</a>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="profile">
+              <img
+                src="assets/images/profile.jpg"
+                alt="Profile photo"
+                onerror="
+                  this.style.display = 'none';
+                  document.getElementById('profileFallback').style.display =
+                    'grid';
+                "
+              />
+              <div
+                id="profileFallback"
+                class="profile-fallback"
+                style="display: none"
+              >
+                <p>Profile image not available</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>About Me</h2>
-        </div>
-
-        
-        
-        <div class="about-stack">
-          <div class="card">
-            <h3>Who I am</h3>
-            <p>
-              I’m a Software Engineering student at KFUPM. I enjoy building systems
-              that combine clean interfaces with strong frontend and backend logic and reliable databases.
-            </p>
-            <p>
-              My focus is on practical software: validation, role-based workflows, and automation
-              that keeps data accurate and maintainable.
-            </p>
+      <!-- ABOUT -->
+      <section id="about" class="section">
+        <div class="container">
+          <div class="section-head">
+            <h2>About Me</h2>
           </div>
 
-          <div class="card">
-            <h3>Technical Skills</h3>
-            <ul class="chips" aria-label="Skills list">
-              <li class="chip">Java</li>
-              <li class="chip">Python</li>
-              <li class="chip">HTML • CSS • JavaScript</li>
-              <li class="chip">Flutter (Dart)</li>
-              <li class="chip">MySQL</li>
-              <li class="chip">Git & GitHub</li>
-            </ul>
+          <div class="about-stack">
+            <div class="card">
+              <h3>Who I am</h3>
+              <p>
+                I’m a Software Engineering student at KFUPM. I enjoy building
+                systems that combine clean interfaces with strong frontend and
+                backend logic and reliable databases.
+              </p>
+              <p>
+                My focus is on practical software: validation, role-based
+                workflows, and automation that keeps data accurate and
+                maintainable.
+              </p>
+            </div>
 
+            <div class="card">
+              <h3>Technical Skills</h3>
+              <ul class="chips" aria-label="Skills list">
+                <li class="chip">Java</li>
+                <li class="chip">Python</li>
+                <li class="chip">HTML • CSS • JavaScript</li>
+                <li class="chip">Flutter (Dart)</li>
+                <li class="chip">MySQL</li>
+                <li class="chip">Git & GitHub</li>
+              </ul>
+            </div>
+            <div class="card api-card" aria-live="polite">
+              <div class="api-head">
+                <h3>Developer Quote</h3>
+                <button class="btn api-btn" id="refreshQuote" type="button">
+                  New quote
+                </button>
+              </div>
+
+              <p class="api-status" id="quoteStatus">Loading…</p>
+              <blockquote class="api-quote" id="quoteText" hidden></blockquote>
+              <p class="api-author" id="quoteAuthor" hidden></p>
+            </div>
           </div>
         </div>
-</div>
-    </section>
+      </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Projects</h2>
-        </div>
+      <!-- PROJECTS -->
+      <section id="projects" class="section">
+        <div class="container">
+          <div class="section-head">
+            <h2>Projects</h2>
+          </div>
+          <div class="projects-controls" aria-label="Project controls">
+            <label class="sr-only" for="projectSearch">Search projects</label>
+            <input
+              id="projectSearch"
+              class="project-search"
+              type="search"
+              placeholder="Search projects (e.g., Java, Flutter, database)..."
+              autocomplete="off"
+            />
+            <button class="btn" id="clearSearch" type="button">Clear</button>
+          </div>
 
-        <div class="projects-grid">
-          <article class="project card">
-            <div class="project-img-wrap">
+          <p class="empty-state" id="projectsEmpty" hidden>
+            No projects found. Try a different keyword.
+          </p>
+
+          <div class="projects-grid">
+            <article
+              class="project card"
+              data-tags="flutter dart php mysql api json database triggers procedures admin guest leaderboard"
+            >
+              
+              
+
+              <div class="project-img-wrap">
               <img
                 src="assets/images/project-horse-racing.jpg"
                 alt="Horse Racing Database System preview"
                 loading="lazy"
-                onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback');"
+                onerror="
+                  this.style.display = 'none';
+                  this.parentElement.classList.add('img-fallback');"
               />
               <div class="img-placeholder" aria-hidden="true">
                 🐎
@@ -133,90 +187,134 @@
               </div>
             </div>
 
-            <div class="project-body">
-              <h3>Horse Racing Database System</h3>
-              <p>
-                Mobile app for managing horse races and results, backed by a PHP/MySQL API and designed with separate admin and guest features.
-              </p>
-              <ul class="bullets">
-                <li>Implemented admin tools for race/results management and guest views for leaderboards and stats.</li>
-                <li>Database automation with stored procedures & triggers</li>
-                <li>Archiving logic for deleted horse records</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="project card">
-            <div class="project-img-wrap">
-              <img
-                src="assets/images/project-reservation.jpg"
-                alt="Classroom & Facilities Reservation System preview"
-                loading="lazy"
-                onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback');"
-              />
-              <div class="img-placeholder" aria-hidden="true">
-              🏫
-                <span>Project image</span>
+              <div class="project-body">
+                <h3>Horse Racing Database System</h3>
+                <p>
+                  Mobile app for managing horse races and results, backed by a
+                  PHP/MySQL API and designed with separate admin and guest
+                  features.
+                </p>
+                <ul class="bullets">
+                  <li>
+                    Implemented admin tools for race/results management and
+                    guest views for leaderboards and stats.
+                  </li>
+                  <li>Database automation with stored procedures & triggers</li>
+                  <li>Archiving logic for deleted horse records</li>
+                </ul>
               </div>
-            </div>
+            </article>
 
-            <div class="project-body">
-              <h3>Classroom & Facilities Reservation System</h3>
-              <p>
-                Desktop reservation app that schedules classrooms/facilities while enforcing rules that prevent conflicts and unauthorized bookings.
-              <ul class="bullets">
-                <li>Built the JavaFX interface and booking flow with time-slot conflict detection to prevent double-booking.</li>
-                <li>Role-based access rules</li>
-                <li>Facility constraints and booking policies</li>
-              </ul>
-            </div>
-          </article>
+            <article
+              class="project card"
+              data-tags="java javafx desktop reservation scheduling validation role-based access conflict double-booking facilities"
+            >
+              <div class="project-img-wrap">
+                <img
+                  src="assets/images/project-reservation.jpg"
+                  alt="Classroom & Facilities Reservation System preview"
+                  loading="lazy"
+                  onerror="
+                    this.style.display = 'none';
+                    this.parentElement.classList.add('img-fallback');
+                  "
+                />
+                <div class="img-placeholder" aria-hidden="true">
+                  🏫
+                  <span>Project image</span>
+                </div>
+              </div>
+
+              <div class="project-body">
+                <h3>Classroom & Facilities Reservation System</h3>
+                <p>
+                  Desktop reservation app that schedules classrooms/facilities
+                  while enforcing rules that prevent conflicts and unauthorized
+                  bookings.
+                </p>
+
+                <ul class="bullets">
+                  <li>
+                    Built the JavaFX interface and booking flow with time-slot
+                    conflict detection to prevent double-booking.
+                  </li>
+                  <li>Role-based access rules</li>
+                  <li>Facility constraints and booking policies</li>
+                </ul>
+              </div>
+            </article>
+          </div>
         </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section">
+        <div class="container">
+          <div class="section-head">
+            <h2>Contact Me</h2>
+          </div>
+
+          <div class="contact-grid">
+            <form class="card form" id="contactForm" novalidate>
+              <div class="field">
+                <label for="name">Name</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Your name"
+                  autocomplete="name"
+                  required
+                />
+                <small class="error" id="nameError"></small>
+              </div>
+
+              <div class="field">
+                <label for="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                  required
+                />
+                <small class="error" id="emailError"></small>
+              </div>
+
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  placeholder="Write your message..."
+                  required
+                ></textarea>
+                <small class="error" id="messageError"></small>
+              </div>
+
+              <button class="btn primary" type="submit">Send</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-row">
+        <p>© <span id="year"></span> Muhannad. All rights reserved.</p>
+        <a class="to-top" href="#home">Back to top</a>
       </div>
-    </section>
+    </footer>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Contact Me</h2>
-        </div>
-
-        <div class="contact-grid">
-          <form class="card form" id="contactForm" novalidate>
-            <div class="field">
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" placeholder="Your name" autocomplete="name" required />
-              <small class="error" id="nameError"></small>
-            </div>
-
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
-              <small class="error" id="emailError"></small>
-            </div>
-
-            <div class="field">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
-              <small class="error" id="messageError"></small>
-            </div>
-
-            <button class="btn primary" type="submit">Send</button>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-row">
-      <p>© <span id="year"></span> Muhannad. All rights reserved.</p>
-      <a class="to-top" href="#home">Back to top</a>
-    </div>
-  </footer>
-
-  <!-- Toast -->
-  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
-</body>
+    <!-- Toast -->
+    <div
+      class="toast"
+      id="toast"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+  </body>
 </html>

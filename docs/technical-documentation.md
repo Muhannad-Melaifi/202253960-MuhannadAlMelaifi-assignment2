@@ -1,60 +1,89 @@
-# Technical Documentation (Assignment 1)
+# Technical Documentation (Assignment 2)
 
 ## Overview
-This project is a personal portfolio web app built with:
-- HTML for structure
-- CSS for styling and responsive layout
-- JavaScript for interactivity (theme toggle, greeting, validation)
+This Assignment 2 builds on Assignment 1 by adding more interactivity and modern JavaScript behavior:
 
-## Pages & Sections
-### `index.html`
-Contains:
-- Header navigation with links to page sections
-- Hero section with greetings
-- About section with intro + skills
-- Projects section with two project cards
-- Contact section with a form (no backend)
-- Footer with dynamic year
+### New features added in Assignment 2
+1) **Live project search/filter** (dynamic content)
+2) **API widget** (data handling using `fetch()`)
+3) **Improved user feedback**:
+   - Empty state when no projects match
+   - Loading indicator while fetching API data
+   - Friendly error message if API fails
 
-## Styling (`css/styles.css`)
-### Responsive Design
-- Desktop uses multi-column grids (`grid-template-columns`)
-- Tablet/mobile collapses to single-column layout using media queries:
+The Assignment 1 features remain (theme toggle saved in localStorage, greeting message, form validation + toast notifications).
 
+---
 
-### Theme System
-- Uses CSS variables (custom properties) in 
-- Light mode overrides variables in 
+## Dynamic Content: Project Search/Filter
+### What it does
+- A search input allows users to filter projects live while typing.
+- Projects are shown/hidden based on whether the query matches:
+  - The visible text content of the project card, OR
+  - A `data-tags` attribute attached to each project.
 
-## JavaScript (`js/script.js`)
-### Features
-1. Theme toggle
-   - Toggles `data-theme` attribute on `<html>`
+### Files involved
+- `index.html`
+  - Search input: `#projectSearch`
+  - Clear button: `#clearSearch`
+  - Empty state message: `#projectsEmpty`
+  - Project cards: `.project.card` with `data-tags="..."`
 
-2. Time-based greeting
-   - Reads current hour and sets a greeting message in the hero section
+- `js/script.js`
+  - Listens to `input` events on `#projectSearch`
+  - Shows/hides project cards by setting `style.display`
+  - Toggles empty state when zero projects match
 
-3. Mobile navigation
-   - Toggles menu visibility on small screens
-   - Closes menu when a link is clicked
+### User feedback
+- If there are no matches:
+  - Displays: “No projects found. Try a different keyword.”
 
-4. Contact form validation
-   - Checks:
-     - Name length ≥ 2
-     - Email matches a simple regex
-     - Message length ≥ 10
-   - Displays inline error messages
-   - Shows a toast message on success or failure
-   - No backend submission
+---
 
-5. Footer year
-   - Updates year automatically with JavaScript
+## Data Handling: Public API Widget
+### What it does
+- Fetches dynamic content from a public API using `fetch()`.
+- Displays:
+  - Loading text while waiting
+  - The returned content on success
+  - A friendly error message on failure
+- Includes a button to refresh/reload the data.
+
+### Files involved
+- `index.html`
+  - Widget elements:
+    - `#quoteStatus` (loading/error/success hint)
+    - `#quoteText` (content output)
+    - `#quoteAuthor` (source/author text)
+    - `#refreshQuote` (reload button)
+
+- `js/script.js`
+  - Uses `async/await` and `try/catch` for error handling
+  - Updates the UI based on:
+    - loading → success → error states
+
+### Error handling
+- If the API fails:
+  - Shows a friendly message on the page
+  - Also triggers a toast message for additional feedback
+
+---
+
+## Animations / Transitions
+- Button hover effects and card styling are handled via CSS.
+- Toast messages use CSS transitions for a smooth appearance.
+- The API widget loading state includes a subtle shimmer animation on the loading text (lightweight and non-distracting).
+
+---
+
+## Existing Assignment 1 Features (still included)
+- **Theme toggle** with preference saved in `localStorage`
+- **Greeting message** based on time of day
+- **Contact form validation** with inline error messages
+- **Toast notifications** for user feedback
+
+---
 
 ## Known Limitations
-- Contact form does not send messages (no backend).
-- Project links are not included; can be added later.
-
-## How to Extend
-- Add GitHub/LinkedIn links in the Contact sidebar
-- Add a “Skills” or “Achievements” section
-- Add project buttons linking to demos or repositories
+- Contact form is front-end only (no backend submission).
+- API content depends on network availability and the API uptime.
