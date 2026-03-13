@@ -14,7 +14,7 @@ function showToast(message) {
 }
 
 // ===========================
-// Theme Toggle 
+// Theme Toggle
 // ===========================
 (function initTheme() {
   const saved = localStorage.getItem("theme");
@@ -72,7 +72,7 @@ document.querySelectorAll(".nav-link").forEach((link) => {
 });
 
 // ===========================
-// Form validation 
+// Form validation
 // ===========================
 function setError(id, msg) {
   const el = $(id);
@@ -126,10 +126,10 @@ $("contactForm").addEventListener("submit", (e) => {
 $("year").textContent = String(new Date().getFullYear());
 
 // ===========================
-// Assignment 2 
+// Assignment 2
 // ===========================
 // Project search / filter
-(function initProjectSearch(){
+(function initProjectSearch() {
   const search = $("projectSearch");
   const clearBtn = $("clearSearch");
   const empty = $("projectsEmpty");
@@ -137,15 +137,15 @@ $("year").textContent = String(new Date().getFullYear());
 
   if (!search || !clearBtn || !empty || cards.length === 0) return;
 
-  function normalize(s){
+  function normalize(s) {
     return (s || "").toLowerCase().trim();
   }
 
-  function applyFilter(){
+  function applyFilter() {
     const q = normalize(search.value);
     let shown = 0;
 
-    cards.forEach(card => {
+    cards.forEach((card) => {
       const text = normalize(card.textContent);
       const tags = normalize(card.getAttribute("data-tags"));
       const match = q === "" || text.includes(q) || tags.includes(q);
@@ -198,7 +198,7 @@ $("year").textContent = String(new Date().getFullYear());
       quoteEl.textContent = `“${text}”`;
       authorEl.textContent = "- GitHub Zen";
 
-      statusEl.textContent = '';
+      statusEl.textContent = "";
       quoteEl.hidden = false;
       authorEl.hidden = false;
     } catch (err) {
