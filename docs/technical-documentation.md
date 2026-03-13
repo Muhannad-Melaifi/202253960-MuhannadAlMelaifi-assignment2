@@ -87,3 +87,6 @@ The Assignment 1 features remain (theme toggle saved in localStorage, greeting m
 ## Known Limitations
 - Contact form is front-end only (no backend submission).
 - API content depends on network availability and the API uptime.
+
+## API Reliability Note
+- The quote widget caches the last successful quote in localStorage and falls back to an offline quote if the API is unavailable or rate-limited.

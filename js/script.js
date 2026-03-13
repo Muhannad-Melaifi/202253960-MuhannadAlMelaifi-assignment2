@@ -171,7 +171,14 @@ $("year").textContent = String(new Date().getFullYear());
 // ===========================
 // Shows loading + friendly errors.
 // ===========================
-(async function initDevQuote() {
+
+// ===========================
+// Developer Quote (Public API) + local fallback
+// - Uses GitHub Zen when available
+// - Caches last successful quote to reduce API calls
+// - Falls back to local quotes if rate-limited/offline
+// ===========================
+(async function initDevQuote(){
   const statusEl = $("quoteStatus");
   const quoteEl = $("quoteText");
   const authorEl = $("quoteAuthor");
@@ -179,38 +186,96 @@ $("year").textContent = String(new Date().getFullYear());
 
   if (!statusEl || !quoteEl || !authorEl || !refreshBtn) return;
 
-  async function loadQuote() {
-    // UI -> loading state
-    statusEl.textContent = "Loading…";
+  const FALLBACK_QUOTES = [["Code is like humor. When you have to explain it, it’s bad.", "Cory House"], ["First, solve the problem. Then, write the code.", "John Johnson"], ["Simplicity is the soul of efficiency.", "Austin Freeman"], ["Make it work, make it right, make it fast.", "Kent Beck"], ["Programs must be written for people to read, and only incidentally for machines to execute.", "Harold Abelson"]];
+
+  function setQuote(text, author){
+    quoteEl.textContent = `“${text}”`;
+    authorEl.textContent = author ? `— ${author}` : "";
+    quoteEl.hidden = false;
+    authorEl.hidden = !author;
+  }
+
+  function setStatus(text){
+    statusEl.textContent = text || "";
+  }
+
+  function saveCache(text, author){
+    try {
+      localStorage.setItem("lastQuoteText", text);
+      localStorage.setItem("lastQuoteAuthor", author || "");
+      localStorage.setItem("lastQuoteTime", String(Date.now()));
+    } catch (_e) {}
+  }
+
+  function loadCache(){
+    try {
+      const t = localStorage.getItem("lastQuoteText");
+      if (!t) return null;
+      return {
+        text: t,
+        author: localStorage.getItem("lastQuoteAuthor") || "",
+        time: Number(localStorage.getItem("lastQuoteTime") || "0")
+      };
+    } catch (_e) {
+      return null;
+    }
+  }
+
+  function randomFallback(){
+    const [text, author] = FALLBACK_QUOTES[Math.floor(Math.random() * FALLBACK_QUOTES.length)];
+    return { text, author };
+  }
+
+  async function fetchGitHubZen(){
+    const res = await fetch("https://api.github.com/zen", { cache: "no-store" });
+    if (!res.ok) {
+      // 403 is common when rate-limited
+      throw new Error(`Request failed (${res.status})`);
+    }
+    const text = (await res.text()).trim();
+    if (!text) throw new Error("Empty response");
+    return { text, author: "GitHub Zen" };
+  }
+
+  async function loadQuote(forceNetwork = false){
+    // Loading state
     statusEl.classList.add("loading");
+    setStatus("Loading…");
     quoteEl.hidden = true;
     authorEl.hidden = true;
 
+    const cached = loadCache();
+
+    // If we have a cached quote and not forcing network, show it immediately
+    if (cached && !forceNetwork) {
+      setQuote(cached.text, cached.author);
+      setStatus("");
+      statusEl.classList.remove("loading");
+      return;
+    }
+
     try {
-      const res = await fetch("https://api.github.com/zen", {
-        cache: "no-store",
-      });
-      if (!res.ok) throw new Error(`Request failed (${res.status})`);
-
-      const text = (await res.text()).trim();
-      if (!text) throw new Error("Empty response");
-
-      quoteEl.textContent = `“${text}”`;
-      authorEl.textContent = "- GitHub Zen";
-
-      statusEl.textContent = "";
-      quoteEl.hidden = false;
-      authorEl.hidden = false;
+      const q = await fetchGitHubZen();
+      setQuote(q.text, q.author);
+      setStatus("");
+      saveCache(q.text, q.author);
     } catch (err) {
-      statusEl.textContent =
-        "Couldn’t load a quote. Check your connection and try again.";
-      showToast("Quote failed to load");
+      // Fallback to cached quote if available, otherwise local quotes
+      if (cached) {
+        setQuote(cached.text, cached.author);
+        setStatus("Showing last saved quote (API unavailable).");
+      } else {
+        const fb = randomFallback();
+        setQuote(fb.text, fb.author);
+        setStatus("Showing an offline quote.");
+      }
+      showToast("Quote API unavailable");
       console.error(err);
     } finally {
       statusEl.classList.remove("loading");
     }
   }
 
-  refreshBtn.addEventListener("click", loadQuote);
-  await loadQuote();
+  refreshBtn.addEventListener("click", () => loadQuote(true));
+  await loadQuote(false);
 })();

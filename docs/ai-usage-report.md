@@ -16,3 +16,5 @@ I improved my understanding of DOM manipulation, event handling, and using `fetc
 
 ## Responsible Use & Modifications
 I reviewed and edited all AI suggestions, tested the features (including failure cases), and made sure I understand the final code before submitting.
+
+Note: The API widget includes caching and a fallback message to handle API downtime or rate limits.

@@ -32,5 +32,5 @@ See: `docs/technical-documentation.md`
 - Public API widget using `fetch()` (includes loading + friendly error handling)
 - Improved user feedback and small UI polish
 
-## Live Deployment (Optional)
-**Live Site:** <>
+## Live Deployment 
+**Live Site:** <https://muhannad-melaifi.github.io/202253960-MuhannadAlMelaifi-assignment2/>
